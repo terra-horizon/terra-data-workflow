@@ -1,0 +1,17 @@
+name: Deploy to terra-staging01
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Execute Deployment Script
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x /home/terra-root/update_dags.sh
+          /home/terra-root/update_dags.sh
