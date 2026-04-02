@@ -19,6 +19,6 @@ class AiModelRegistryConfig:
         self.login_client_password = Variable.get("aai_clientsecret")
         aai_core = BaseConfig(Variable.get("aai", deserialize_json=True))
         self.login_url = aai_core.base_url
-        self.options = self.AiModelRegistryCoreConfig(Variable.get("data_model_management", deserialize_json=True))
+        self.options = self.AiModelRegistryCoreConfig(Variable.get("ai_model_registry", deserialize_json=True))
 
 
