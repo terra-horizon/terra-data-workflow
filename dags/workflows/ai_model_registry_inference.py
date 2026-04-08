@@ -1,6 +1,7 @@
 from airflow.sdk import task, dag, get_current_context
 
 from authorization.ai_model_registry_auth import AiModelRegistryAuthService
+from authorization.test_auth import TestAuthService
 from common.extensions.callbacks import on_execute_callback, on_retry_callback, on_success_callback, \
     on_failure_callback, on_skipped_callback
 from common.extensions.http_requests import http_post
@@ -13,7 +14,7 @@ from services.logging import Logger
 @dag(DAG_ID, tags=DAG_TAGS, dag_display_name=DAG_DISPLAY_NAME, description=DAG_DESCRIPTION, params=DAG_PARAMS)
 def ai_model_registry_inference():
     ai_model_registry_config = AiModelRegistryConfig()
-    ai_model_registry_auth = AiModelRegistryAuthService()
+    ai_model_registry_auth = TestAuthService()
 
     @task(on_execute_callback=on_execute_callback, on_retry_callback=on_retry_callback,
           on_success_callback=on_success_callback, on_failure_callback=on_failure_callback,
