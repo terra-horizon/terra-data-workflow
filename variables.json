@@ -1,6 +1,6 @@
 {
   "aai": "{\"base_url\": \"https://terra-staging01.vhosts.cite.gr/oauth/realms/staging/protocol/openid-connect/token\"}",
-  "aai_clientid": "test-client",
+  "aai_clientid": "terra-data-workflow",
   "aai_clientsecret": "***",
   "ai_model_registry": "{\"base_url\": \"https://terra-staging01.vhosts.cite.gr/ai-model-registry\", \"scope\": \"terra\", \"endpoints\": {\"infer\": \"/api/photos/infer\"}}"
 }
