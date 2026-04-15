@@ -22,9 +22,9 @@ def ai_model_registry_inference():
         log = Logger()
         dag_context = get_current_context()
         url, headers, payload = infer_builder(ai_model_registry_auth.get_token(), dag_context, ai_model_registry_config)
-        log.info(f"Payload:\n{payload}\n")
+        log.info_payload("payload", payload, True)
         response = http_post(url=url, headers=headers, data=payload)
-        log.info(f"\n{response}\n")
+        log.info_payload("server response", response, True)
         return response
 
     _ = infer()
