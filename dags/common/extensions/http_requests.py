@@ -63,7 +63,7 @@ def _safe_json_dumps(data: Any) -> str:
 
 def http_request(method: HttpMethod, **kwargs) -> Response:
     if "timeout" not in kwargs or kwargs["timeout"] is None:
-        kwargs["timeout"] = (10, 1200)
+        kwargs["timeout"] = (300, 1200)
     response = requests.request(method=method.name, **kwargs)
     if not response.ok:
         print("HTTP error response:", response.status_code, response.text)
@@ -76,12 +76,24 @@ def http_get(url: str | bytes, params: HttpSupportsItems = None, headers: HttpHe
     response = http_request(HttpMethod.GET, url=url, params=params, headers=headers, auth=auth)
     return response.json()
 
+def http_get_unsafe(url: str | bytes, params: HttpSupportsItems = None, headers: HttpHeaders = None,
+             auth: HttpAuth = None) -> Any:
+    response = http_request(HttpMethod.GET, url=url, params=params, headers=headers, auth=auth, verify=False)
+    return response.json()
+
 
 def http_post(url: str | bytes, params: HttpSupportsItems = None, headers: HttpHeaders = None, auth: HttpAuth = None,
               data: HttpData = None, files: HttpFiles = None, ) -> Any:
     if data is not None and headers.get('Content-Type') == 'application/json':
         data = _safe_json_dumps(data)
     response = http_request(HttpMethod.POST, url=url, params=params, headers=headers, auth=auth, data=data, files=files)
+    return response.json()
+
+def http_post_unsafe(url: str | bytes, params: HttpSupportsItems = None, headers: HttpHeaders = None, auth: HttpAuth = None,
+              data: HttpData = None, files: HttpFiles = None, ) -> Any:
+    if data is not None and headers.get('Content-Type') == 'application/json':
+        data = _safe_json_dumps(data)
+    response = http_request(HttpMethod.POST, url=url, params=params, headers=headers, auth=auth, data=data, files=files, verify=False)
     return response.json()
 
 

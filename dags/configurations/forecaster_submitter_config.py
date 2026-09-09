@@ -13,6 +13,8 @@ class ForecasterSubmitterConfig:
         def __init__(self, data: dict):
             self.base_url = data.get("base_url")
             self.scope = data.get("scope")
+            self.poke_interval = data.get("poke_interval")
+            self.x_api_key = data.get("x_api_key")
             self.endpoints = self.EndpointsConfig(data.get("endpoints"))
 
     def __init__(self):
