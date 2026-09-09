@@ -9,7 +9,7 @@ nav:
     - Architecture: architecture.md
     - Datastores: datastore.md
   - Workflows:
-    - AI Model Registry Inference: workflows-ai-model-registry-inference.md
+    - Forecasetr: workflows-forecaster.md
   - Setup & Monitoring:
     - Automations: automations.md
     - Deployment: deployment.md
