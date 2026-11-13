@@ -1,5 +1,4 @@
-from configurations.ai_model_registry_config import AiModelRegistryConfig
 from configurations.forecaster_data_ingestion_config import ForecasterDataIngestionConfig
 from configurations.forecaster_submitter_config import ForecasterSubmitterConfig
 
-__all__ = ["AiModelRegistryConfig", "ForecasterDataIngestionConfig", "ForecasterSubmitterConfig"]
+__all__ = ["ForecasterDataIngestionConfig", "ForecasterSubmitterConfig"]
