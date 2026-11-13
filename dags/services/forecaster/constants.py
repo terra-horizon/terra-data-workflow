@@ -8,7 +8,7 @@ DAG_ID = "FORECASTER"
 
 DAG_PARAMS = {
     "provider": Param("sentinel-2", type=["string"]),
-    "ingestion_profile": Param("forecaster-collector", type=["string"]),
+    "ingestion_profile": Param("uc1-sperchios-river", type=["string"]),
     "submitter_profile": Param("stored-forecast", type=["string"]),
     "aoi_id": Param("sperchios", type=["string"], description="Stable remote-storage identity for the physical AOI."),
     "bbox": Param([22.433493, 38.837552, 22.569555, 38.894223], type=["array"], items={"type": "number"}, minItems=4,
